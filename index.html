@@ -10,7 +10,8 @@
   <div class="container">
     <h1>USD vs MXN Savings Calculator</h1>
     
-    <form id="calculatorForm">
+    <!-- Prevent default form submission by adding onsubmit="return false;" -->
+    <form id="calculatorForm" onsubmit="return false;">
       <fieldset>
         <legend>General Parameters</legend>
         <label for="timeHorizon">Time Horizon (years):</label>
@@ -41,11 +42,14 @@
         <input type="number" id="furnishCost" value="1000" step="1" />
       </fieldset>
       
+      <!-- Must be type="button" so it doesn't submit the form -->
       <button type="button" id="calculateBtn">Calculate</button>
     </form>
 
     <div id="results"></div>
   </div>
+
+  <!-- Place the script at the bottom of the body so the DOM is loaded first -->
   <script src="script.js"></script>
 </body>
 </html>
