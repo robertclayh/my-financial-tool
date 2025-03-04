@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USD vs MXN Savings Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>USD vs MXN Savings Calculator</h1>
+    
+    <form id="calculatorForm">
+      <fieldset>
+        <legend>General Parameters</legend>
+        <label for="timeHorizon">Time Horizon (years):</label>
+        <input type="number" id="timeHorizon" value="1" step="0.1" min="0.1" />
+
+        <label for="usdApy">USD HYSA APY (%):</label>
+        <input type="number" id="usdApy" value="3.70" step="0.1" />
+
+        <label for="mxnApy">MXN Bond APY (%):</label>
+        <input type="number" id="mxnApy" value="9.44" step="0.1" />
+
+        <label for="conversionRate">Current USD to MXN Conversion Rate:</label>
+        <input type="number" id="conversionRate" value="20" step="0.1" />
+        
+        <label for="fxChange">Expected FX Change (% over period):</label>
+        <input type="number" id="fxChange" value="0" step="0.1" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Expense Categories</legend>
+        <label for="gymCost">Gym Membership (USD):</label>
+        <input type="number" id="gymCost" value="500" step="1" />
+
+        <label for="rentCost">Rent + Deposit (USD):</label>
+        <input type="number" id="rentCost" value="1500" step="1" />
+
+        <label for="furnishCost">Furnishings (USD):</label>
+        <input type="number" id="furnishCost" value="1000" step="1" />
+      </fieldset>
+      
+      <button type="button" id="calculateBtn">Calculate</button>
+    </form>
+
+    <div id="results"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
