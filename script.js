@@ -16,13 +16,18 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   const mxnGrowthFactor = Math.pow(1 + mxnApy, timeHorizon);
 
   // -------------------------------
-  // USD HYSA Scenario with 2% Cashback
+  // USD HYSA Scenario with delayed cashback (received at end)
   // -------------------------------
+  // Calculate the cost after 1 year if no cashback is applied
+  const gymCostAfterInterest = gymCost * usdGrowthFactor;
+  const rentCostAfterInterest = rentCost * usdGrowthFactor;
+  const furnishCostAfterInterest = furnishCost * usdGrowthFactor;
+  
+  // Now subtract the cashback (2% of gym and furnishings) that is only received at the end
   const gymCashback = gymCost * 0.02;
   const furnishCashback = furnishCost * 0.02;
-  // Rent doesn't get cashback
-  const totalExpenseUSD = gymCost + rentCost + furnishCost - (gymCashback + furnishCashback);
-  const finalUsdSavings = totalExpenseUSD * usdGrowthFactor;
+  
+  const finalUsdSavings = gymCostAfterInterest + rentCostAfterInterest + furnishCostAfterInterest - (gymCashback + furnishCashback);
 
   // -------------------------------
   // MXN Bond Scenario without Cashback
@@ -54,7 +59,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   const resultsDiv = document.getElementById('results');
   resultsDiv.innerHTML = `
     <h2>Results</h2>
-    <p><strong>USD HYSA Scenario:</strong> Final effective cost (after growth & cashback adjustments): $${finalUsdSavings.toFixed(2)} USD</p>
+    <p><strong>USD HYSA Scenario:</strong> Final effective cost (after growth & delayed cashback): $${finalUsdSavings.toFixed(2)} USD</p>
     <p><strong>MXN Bond Scenario:</strong> Final effective cost (after growth and FX adjustments, without cashback): $${totalExpenseMXN_inUSD.toFixed(2)} USD</p>
     <p>Adjusted Conversion Rate for conversion back to USD: ${adjustedConversionRate.toFixed(2)} MXN per USD</p>
   `;
